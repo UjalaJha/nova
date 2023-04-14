@@ -15,7 +15,6 @@ class Base:
         self.params = params
         self.clname = clname
 
-
     def makeRequest(self):
         # Make the API request and retrieve the JSON response
         response = requests.get(self.url, params=self.params, headers=self.headers)
@@ -26,17 +25,17 @@ class Base:
 
 # Define the API endpoint classes and search parameters
 class AllRepositories(Base):
-
-    def __init__(self, page):
+    def __init__(self, page, licensename):
         url = 'https://api.github.com/search/repositories'
         params = {
-            'q': 'license:MIT stars:>10000',
+            'q': 'license:' + licensename + ' stars:>10000',
             'sort': 'stars',
             'order': 'desc',
             'per_page': 100,
             'page': page
         }
         super(AllRepositories, self).__init__(url, params, self.__class__.__name__)
+
 
 # Define the API endpoint classes and search parameters
 class GetLanguage(Base):
@@ -48,12 +47,20 @@ class GetLanguage(Base):
 
 
 if __name__ == '__main__':
-
+    licensename = "CC0-1.0"
+    # licensename = "EPL-2.0"
+    # licensename = "LGPL-3.0"
+    # licensename = "MPL-2.0"
+    # licensename = "BSD-3-Clause"
+    # licensename = "BSD-2-Clause"
+    # licensename = "GPL-3.0"
+    # licensename = "apache-2.0"
+    # licensename = "MIT"
     all_repos = []
     page = 1
     while True:
         print("Start fetching page = ", page)
-        response = AllRepositories(page=page).makeRequest()
+        response = AllRepositories(page=page, licensename=licensename).makeRequest()
 
         if "items" in response:
             # transformation
@@ -80,4 +87,4 @@ if __name__ == '__main__':
             break
 
     df = pd.DataFrame(all_repos)
-    df.to_csv("repos.csv")
+    df.to_csv(f"repos_{licensename}.csv")
