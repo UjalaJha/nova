@@ -1,6 +1,6 @@
 import csv
 import github
-from config import TOKEN
+from nova.github_api_scraper.config import TOKEN
 from github.GithubException import UnknownObjectException
 from github.GithubException import GithubException
 
