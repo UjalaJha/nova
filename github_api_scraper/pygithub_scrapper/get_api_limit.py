@@ -1,5 +1,6 @@
 from github import Github
-from config import TOKEN
+from nova.github_api_scraper.config import TOKEN
+
 
 # Create a GitHub API client using your access token
 g = Github(TOKEN)

@@ -1,5 +1,5 @@
 import requests
-from config import TOKEN
+from nova.github_api_scraper.config import TOKEN
 
 headers = {
     'Authorization': 'token '+TOKEN
