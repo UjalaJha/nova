@@ -47,7 +47,7 @@ class GetLanguage(Base):
 
 
 if __name__ == '__main__':
-    licensename = "CC0-1.0"
+    # licensename = "CC0-1.0"
     # licensename = "EPL-2.0"
     # licensename = "LGPL-3.0"
     # licensename = "MPL-2.0"
@@ -55,7 +55,7 @@ if __name__ == '__main__':
     # licensename = "BSD-2-Clause"
     # licensename = "GPL-3.0"
     # licensename = "apache-2.0"
-    # licensename = "MIT"
+    licensename = "MIT"
     all_repos = []
     page = 1
     while True:
