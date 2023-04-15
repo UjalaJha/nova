@@ -55,18 +55,18 @@ def combine():
     df5 = pd.read_csv("repos_EPL-2.0.csv")
     df6 = pd.read_csv("repos_GPL-3.0.csv")
     df7 = pd.read_csv("repos_LGPL-3.0.csv")
-    df8 = pd.read_csv("repos_mit.csv")
+    df8 = pd.read_csv("repos_MIT.csv")
     df9 = pd.read_csv("repos_MPL-2.0.csv")
 
     combined = pd.concat([df1, df2, df3, df4, df5, df6, df7, df8, df9], axis=0)
     combined.to_csv("combined.csv")
 
 
-# if __name__ == "__main__":
-#     combine()
-
-
 if __name__ == "__main__":
+    combine()
+
+
+def run():
 
     for licensename in licensenames:
         all_repos = []
